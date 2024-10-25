@@ -74,54 +74,17 @@ public class HomeworkTwo {
 
 
     public static void sumAllArr(int[] arr1, int[] arr2, int[] arr3 ) {
-        int firstLength;
-        int secondLength;
-        int[] firstArr;
-        int[] secondArr;
-        int[] thirdArr;
-        firstLength = Math.max(arr1.length, Math.max(arr2.length, arr3.length));
-        if (firstLength == arr1.length) {
-            firstArr = arr1;
-            secondLength = Math.max(arr2.length, arr3.length);
-            if (secondLength == arr2.length){
-                secondArr = arr2;
-                thirdArr = arr3;
-            } else {
-                secondArr = arr3;
-                thirdArr = arr2;
-            }
-        } else if (firstLength == arr2.length) {
-            firstArr = arr2;
-            secondLength = Math.max(arr1.length, arr3.length);
-            if (secondLength == arr1.length){
-                secondArr = arr1;
-                thirdArr = arr3;
-            } else {
-                secondArr = arr3;
-                thirdArr = arr1;
-            }
-        } else {
-            firstArr = arr3;
-            secondLength = Math.max(arr1.length, arr2.length);
-            if (secondLength == arr2.length){
-                secondArr = arr2;
-                thirdArr = arr1;
-            } else {
-                secondArr = arr1;
-                thirdArr = arr2;
-            }
+        int maxLength = Math.max(arr1.length, Math.max(arr2.length, arr3.length));
+        int[] output = new int[maxLength];
+        for (int i = 0; i < arr1.length; i++) {
+            output[i] += arr1[i];
         }
-        int[] newArr = new int[firstArr.length];
-        for (int i = secondArr.length; i < firstArr.length; i++) {
-            for (int j = thirdArr.length; j < secondArr.length; j++) {
-                for (int k = 0; k < thirdArr.length; k++) {
-                    newArr[k] = firstArr[k] + secondArr[k] + thirdArr[k];
-                }
-                newArr[j] = firstArr[j] + secondArr[j];
-            }
-            newArr[i] = firstArr[i];
+        for (int i = 0; i < arr2.length; i++) {
+            output[i] += arr2[i];
         }
-
+        for (int i = 0; i < arr3.length; i++) {
+            output[i] += arr3[i];
+        }
 
         System.out.println(Arrays.toString(arr1));
         System.out.println("+");
@@ -129,7 +92,7 @@ public class HomeworkTwo {
         System.out.println("+");
         System.out.println(Arrays.toString(arr3));
         System.out.println("=");
-        System.out.println(Arrays.toString(newArr));
+        System.out.println(Arrays.toString(output));
     }
 
     public static void equalSum(int[] arr) {
@@ -175,17 +138,14 @@ public class HomeworkTwo {
 
     public static void sortArr(int[] a) {
         System.out.println(Arrays.toString(a));
-        int fix = a[0];
-        for (int i = 1; i < a.length-1; i++) {
-           if (fix <= a[i]) {
-               fix = a[i];
-           } else {
-               System.out.println("Элементы массива расположены не по порядку возврастания");
-               break;
-           }
-           if (i == a.length-2) {
-               System.out.println("Элементы массива расположены по порядку возрастания");
-           }
+        for (int i = 1; i < a.length; i++) {
+            if (a[i - 1] > a[i]) {
+                System.out.println("Элементы массива расположены не по порядку возрастания");
+                break;
+            }
+            if (i == a.length - 1) {
+                System.out.println("Элементы массива расположены по порядку возрастания");
+            }
         }
     }
 
