@@ -45,17 +45,15 @@ public class Homework3 {
         };
         System.out.println("Сумма элементов второй строки массива: " + sumSecondStr(arr3));
         System.out.println("------------------");
-        System.out.println("Заполнение двумерного массива размером N*N по спирали");
-        spiralArr(4);
-        System.out.println();
-        spiralArr(7);
-        System.out.println("------------------");
         System.out.println("Заполнение двумерного массива размером N*M по спирали");
         spiralBoxArr(4, 6);
         System.out.println();
         spiralBoxArr(7,9);
         System.out.println();
         spiralBoxArr(8,5);
+        System.out.println();
+        spiralBoxArr(5,5);
+
         System.out.println("------------------");
     }
 
@@ -153,44 +151,6 @@ public class Homework3 {
             }
             System.out.println();
         }
-    }
-
-    /**
-     * Метод печатающий числа от 0 до size*size-1 по спирали двумерного массива размерностью size
-     * @param size
-     */
-    public static void spiralArr(int size) {
-        int[][] arrNum = new int[size][size];
-        int rowMin = 0;
-        int columnMin = 0;
-        int rowMax = size - 1;
-        int columnMax = size - 1;
-        int num = 0;
-        do {
-            // проход влево по верхней строке
-            for (int i = columnMin; i <= columnMax ; i++) {
-                arrNum[rowMin][i] = num++;
-            }
-            rowMin++;
-            // проход вниз по столбцу по правому краю
-            for (int i = rowMin; i <= rowMax; i++) {
-                arrNum[i][columnMax] = num++;
-            }
-            columnMax --;
-            // проход вправо по нижней строке
-            for (int i = columnMax; i >= columnMin; i--) {
-                arrNum[rowMax][i] = num++;
-            }
-            rowMax --;
-            // проход вверх по столбцу по левому краю
-            for (int i = rowMax; i >= rowMin; i--) {
-                arrNum[i][columnMin] = num++;
-            }
-            columnMin++;
-        } while (num < size*size);
-
-        printArr(arrNum);
-
     }
 
     /**
