@@ -45,10 +45,17 @@ public class Homework3 {
         };
         System.out.println("Сумма элементов второй строки массива: " + sumSecondStr(arr3));
         System.out.println("------------------");
-        System.out.println("Заполнение двумерного массива по спирали");
+        System.out.println("Заполнение двумерного массива размером N*N по спирали");
         spiralArr(4);
         System.out.println();
         spiralArr(7);
+        System.out.println("------------------");
+        System.out.println("Заполнение двумерного массива размером N*M по спирали");
+        spiralBoxArr(4, 6);
+        System.out.println();
+        spiralBoxArr(7,9);
+        System.out.println();
+        spiralBoxArr(8,5);
         System.out.println("------------------");
     }
 
@@ -181,6 +188,51 @@ public class Homework3 {
             }
             columnMin++;
         } while (num < size*size);
+
+        printArr(arrNum);
+
+    }
+
+    /**
+     *  * Метод печатающий числа от 0 до N*M-1 по спирали двумерного массива размерностью N*M
+     * @param n
+     * @param m
+     */
+    public static void spiralBoxArr(int n, int m) {
+        int[][] arrNum = new int[n][m];
+        int rowMin = 0;
+        int columnMin = 0;
+        int rowMax = n - 1;
+        int columnMax = m - 1;
+        int num = 0;
+        do {
+            // проход влево по верхней строке
+            for (int i = columnMin; i <= columnMax ; i++) {
+                if (arrNum[rowMin][i] != 0) break;
+                arrNum[rowMin][i] = num++;
+            }
+            rowMin++;
+
+            // проход вниз по столбцу по правому краю
+            for (int i = rowMin; i <= rowMax; i++) {
+                if (arrNum[i][columnMax] != 0) break;
+                arrNum[i][columnMax] = num++;
+            }
+            columnMax--;
+
+            // проход вправо по нижней строке
+            for (int i = columnMax; i >= columnMin; i--) {
+                if (arrNum[rowMax][i] != 0) break;
+                arrNum[rowMax][i] = num++;
+            }
+            rowMax--;
+            // проход вверх по столбцу по левому краю
+            for (int i = rowMax; i >= rowMin; i--) {
+                if (arrNum[i][columnMin] != 0) break;
+                arrNum[i][columnMin] = num++;
+            }
+            columnMin++;
+        } while (num < n*m);
 
         printArr(arrNum);
 
