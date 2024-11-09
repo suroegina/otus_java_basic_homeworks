@@ -52,6 +52,7 @@ public class Box {
             System.out.println("Коробка открыта. В коробке ничего нет.");
         } else if (this.isOpened && item != null) {
             System.out.println("Коробка открыта. Из коробки убрали предмет - " + item);
+            item = null;
         } else {
             System.out.println("Коробка закрыта. Из коробки не можем убрать предмет.");
         }
