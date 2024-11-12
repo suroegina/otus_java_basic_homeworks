@@ -27,10 +27,4 @@ public class Plate {
         return true;
     }
 
-    public boolean eatCat(int catFood) {
-        if (currentFood - catFood < 0 ) {
-            return false;
-        }
-        return true;
-    }
 }

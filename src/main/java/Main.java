@@ -30,7 +30,7 @@ public class Main {
             if (userAnswer.equals("Y")) {
                 putFood(plate);
                 for (Cat cat: cats) {
-                    cat.feed(plate);
+                    if (!cat.feed(plate)) {break;}
                 }
                 break;
             } else if (userAnswer.equals("N")) {
