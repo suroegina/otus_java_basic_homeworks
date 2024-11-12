@@ -22,7 +22,7 @@ public class Main {
         for (Cat cat: cats) {
             cat.info();
         }
-        Plate plate = new Plate(120);
+        Plate plate = new Plate(130);
         do {
             System.out.println("Покормим котов? Y - да, N - нет, X - выйти из программы");
             Scanner scanner = new Scanner(System.in);
@@ -47,6 +47,7 @@ public class Main {
         for (Cat cat: cats) {
             cat.info();
         }
+        System.out.println("На тарелке осталось " + plate.getCurrentFood() + " единиц еды.");
     }
 
     public static void putFood(Plate plate) {

@@ -24,4 +24,8 @@ public class Cat  {
         isHappy = true;
         return true;
     }
+
+    public int getAppetite() {
+        return appetite;
+    }
 }
