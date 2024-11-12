@@ -46,14 +46,14 @@ public class Main {
         float time;
         System.out.println("Укажите дистанцию в метрах: ");
         int distance = scanner.nextInt();
-        for (Animal a: animals) {
-            time = a.swim(distance);
+        for (Animal animal: animals) {
+            time = animal.swim(distance);
             if (time == -1.0f) {
-                System.out.println("Животное по имени " + a.getName() + " устало. Спасаем его!");
+                System.out.println("Животное по имени " + animal.getName() + " устало. Спасаем его!");
             } else if (time == 0.0f) {
-                System.out.println("Животное по имени " + a.getName() + " не может поплыть. Пожалеем!");
+                System.out.println("Животное по имени " + animal.getName() + " не может поплыть. Пожалеем!");
             } else {
-                System.out.println("Животное по имени " + a.getName() + " проплыло за " + time + " секунд");
+                System.out.println("Животное по имени " + animal.getName() + " проплыло за " + time + " секунд");
             }
         }
     }
