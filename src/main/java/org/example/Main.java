@@ -18,41 +18,17 @@ public class Main {
             new Horse("Вакула", 2, 20, 600)
         };
         System.out.println("Информация о животных:");
-        for (Animal a: animals) {
-            a.info();
+        for (Animal animal: animals) {
+            animal.info();
         }
         do {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Какое соревнование устроим: 1 - бег, 2 - плавние, N - не хочу соревнований? ");
             String userAnswer = scanner.nextLine();
-            float time;
             if (userAnswer.equals("1")) {
-                System.out.println("Укажите дистанцию в метрах: ");
-                int distance = scanner.nextInt();
-                for (Animal a: animals) {
-                    time = a.run(distance);
-                    if (time == -1.0f) {
-                        System.out.println("Животное по имени " + a.getName() + " устало. Спасаем его!");
-                    } else if (time == 0.0f) {
-                        System.out.println("Животное по имени " + a.getName() + " не может побежать. Пожалеем!");
-                    }
-                    else {
-                        System.out.println("Животное по имени " + a.getName() + " пробежало за " + time + " секунд");
-                    }
-                }
+                runCompetition(scanner, animals);
             } else if (userAnswer.equals("2")) {
-                System.out.println("Укажите дистанцию в метрах: ");
-                int distance = scanner.nextInt();
-                for (Animal a: animals) {
-                    time = a.swim(distance);
-                    if (time == -1.0f) {
-                        System.out.println("Животное по имени " + a.getName() + " устало. Спасаем его!");
-                    } else if (time == 0.0f) {
-                        System.out.println("Животное по имени " + a.getName() + " не может поплыть. Пожалеем!");
-                    } else {
-                        System.out.println("Животное по имени " + a.getName() + " проплыло за " + time + " секунд");
-                    }
-                }
+                swimCompetition(scanner, animals);
             } else if (userAnswer.equals("N")) {
                 break;
             } else {
@@ -64,6 +40,38 @@ public class Main {
                 a.info();
             }
         } while (true);
+    }
+
+    private static void swimCompetition(Scanner scanner, Animal[] animals) {
+        float time;
+        System.out.println("Укажите дистанцию в метрах: ");
+        int distance = scanner.nextInt();
+        for (Animal a: animals) {
+            time = a.swim(distance);
+            if (time == -1.0f) {
+                System.out.println("Животное по имени " + a.getName() + " устало. Спасаем его!");
+            } else if (time == 0.0f) {
+                System.out.println("Животное по имени " + a.getName() + " не может поплыть. Пожалеем!");
+            } else {
+                System.out.println("Животное по имени " + a.getName() + " проплыло за " + time + " секунд");
+            }
+        }
+    }
+
+    private static void runCompetition(Scanner scanner, Animal[] animals) {
+        float time;
+        System.out.println("Укажите дистанцию в метрах: ");
+        int distance = scanner.nextInt();
+        for (Animal animal: animals) {
+            time = animal.run(distance);
+            if (time == -1.0f) {
+                System.out.println("Животное по имени " + animal.getName() + " устало. Спасаем его!");
+            } else if (time == 0.0f) {
+                System.out.println("Животное по имени " + animal.getName() + " не может побежать. Пожалеем!");
+            } else {
+                System.out.println("Животное по имени " + animal.getName() + " пробежало за " + time + " секунд");
+            }
+        }
     }
 
 }

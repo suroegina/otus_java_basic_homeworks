@@ -19,10 +19,6 @@ public class Animal {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public float run(int distance) {
         if (runEndurance == 0) {return 0.0f;}
         if (endurance >= distance/runEndurance) {
