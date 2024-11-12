@@ -36,8 +36,8 @@ public class Main {
                 continue;
             }
             System.out.println();
-            for (Animal a: animals) {
-                a.info();
+            for (Animal animal: animals) {
+                animal.info();
             }
         } while (true);
     }
