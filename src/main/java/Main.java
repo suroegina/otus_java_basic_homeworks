@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Main {
+    private static final Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         Cat[] cats = new Cat[]{
                 new Cat("Basik", 30),
@@ -16,12 +17,11 @@ public class Main {
         Plate plate = new Plate(130);
         do {
             System.out.println("Покормим котов? Y - да, N - нет, X - выйти из программы");
-            Scanner scanner = new Scanner(System.in);
             String userAnswer = scanner.nextLine();
             if (userAnswer.equals("Y")) {
                 putFood(plate);
                 for (Cat cat: cats) {
-                    if (!cat.feed(plate)) {break;}
+                    cat.feed(plate);
                 }
                 break;
             } else if (userAnswer.equals("N")) {
@@ -43,7 +43,6 @@ public class Main {
 
     public static void putFood(Plate plate) {
         do {
-            Scanner scanner = new Scanner(System.in);
             System.out.println("На тарелку нужно положить не болеее " + plate.getMaxFood() + " единиц еды. Сколько положим?");
             int foodCount = scanner.nextInt();
             if (plate.addFood(foodCount)) break; else continue;

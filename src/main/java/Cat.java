@@ -1,7 +1,7 @@
 public class Cat  {
     private String name;
-    private int appetite; // аппетит кота
-    private boolean isHappy = false; // сытость кота
+    private int appetite;
+    private boolean isHappy = false;
 
     public Cat(String name, int appetite) {
         this.name = name;
@@ -16,12 +16,11 @@ public class Cat  {
         }
     }
 
-    public boolean feed(Plate plate) {
-        if (plate.getCurrentFood() < appetite) {
-            return false;
+    public void feed(Plate plate) {
+        if (plate.getCurrentFood() < appetite || isHappy) {
+            return;
         }
         plate.setCurrentFood(plate.getCurrentFood() - appetite);
         isHappy = true;
-        return true;
     }
 }
