@@ -33,22 +33,20 @@ public class Car implements Transport{
         if (area == Area.PLAIN && !Area.PLAIN.isForCar()) {
             System.out.println("Машина не может проехать по равнине." );
             return false;
-        }
-        if (area == Area.FOREST && !Area.FOREST.isForCar()) {
+        } else if (area == Area.FOREST && !Area.FOREST.isForCar()) {
             System.out.println("Машина не может проехать по лесу." );
             return false;
-        }
-        if (area == Area.SWAMP && !Area.SWAMP.isForCar()) {
+        } else if (area == Area.SWAMP && !Area.SWAMP.isForCar()) {
             System.out.println("Машина не может проехать по болоту." );
             return false;
-        }
-        if (fuel < 5 * distance/100) {
+        } else if (fuel < 5 * distance/100) {
             System.out.println("Машина не может проехать дистанцию " + distance + ". Не хватает бензина." );
             return false;
+        } else {
+            fuel -= 5 * distance / 100;
+            System.out.println("Человек проехал на машине дистанцию " + distance + ". Осталось бензина - " + getFuel());
+            return true;
         }
-        fuel -= 5 * distance/100;
-        System.out.println("Человек проехал на машине дистанцию " + distance + ". Осталось бензина - " + getFuel() );
-        return true;
     }
 
 

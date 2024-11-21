@@ -41,10 +41,11 @@ public class Horse implements Transport {
         } else if (endurance < 0.4 * distance) {
             System.out.println("Лошадь не может пройти дистанцию " + distance + ". Не хватает сил." );
             return false;
+        } else {
+            endurance -= 0.4 * distance;
+            System.out.println("Человек прокатился на лошади дистанцию " + distance + ". Осталось сил у лошади - " + getEndurance());
+            return true;
         }
-        endurance -= 0.4 * distance;
-        System.out.println("Человек прокатился на лошади дистанцию " + distance + ". Осталось сил у лошади - " + getEndurance() );
-        return true;
 
     }
 }

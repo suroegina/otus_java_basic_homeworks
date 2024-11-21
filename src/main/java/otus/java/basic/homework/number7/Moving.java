@@ -23,15 +23,14 @@ public class Moving {
             System.out.println("Местность: " + area.getTitle());
             System.out.println();
                 for (Transport t:transports) {
-                    human.setCurrentTransport(t);
-
                     System.out.println("На текущий момент сил у человека: " + human.getEndurance());
                     if (!t.isStatus()) {
-                        System.out.println("Текущий транспорт: " + human.getCurrentTransport(t) + ". Статус: занят. Попробуем другой транспорт.");
+                        System.out.println("Транспорт: " + t.getName() + ". Статус: занят. Попробуем другой транспорт.");
                         System.out.println();
                         continue;
                     }
-                    System.out.println("Текущий транспорт: " + human.getCurrentTransport(t) + ". Статус: свободен.");
+                    System.out.println("Текущий транспорт: " + t.getName() + ". Статус: свободен.");
+                    human.setCurrentTransport(t);
                     t.setStatus(false);
                     if (t.go(distance, area)) {
                         if (!human.getActive(distance)) {

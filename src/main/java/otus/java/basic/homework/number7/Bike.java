@@ -24,15 +24,14 @@ public class Bike implements Transport{
         if (area == Area.PLAIN && !Area.PLAIN.isForBike()) {
             System.out.println("Велосипед не может проехать по равнине." );
             return false;
-        }
-        if (area == Area.FOREST && !Area.FOREST.isForBike()) {
+        } else if (area == Area.FOREST && !Area.FOREST.isForBike()) {
             System.out.println("Велосипед не может проехать по лесу." );
             return false;
-        }
-        if (area == Area.SWAMP && !Area.SWAMP.isForBike()) {
+        } else if (area == Area.SWAMP && !Area.SWAMP.isForBike()) {
             System.out.println("Велосипед не может проехать по болоту." );
             return false;
+        } else {
+            return true;
         }
-        return true;
     }
 }
