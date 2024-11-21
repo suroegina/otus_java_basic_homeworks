@@ -1,9 +1,18 @@
 package otus.java.basic.homework.number7;
 
 public class Bike implements Transport{
-    private boolean isForestGo = true;
-    private boolean isSwampGo = false;
-    private boolean isPlainGo = true;
+    private boolean humanInto;
+    private boolean status = true;
+
+    @Override
+    public boolean isStatus() {
+        return status;
+    }
+
+    @Override
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 
     @Override
     public String getName() {
@@ -11,48 +20,19 @@ public class Bike implements Transport{
     }
 
     @Override
-    public boolean isForestGo() {
-        return isForestGo;
-    }
-
-    @Override
-    public boolean isSwampGo() {
-        return isSwampGo;
-    }
-
-    @Override
-    public boolean isPlainGo() {
-        return isPlainGo;
-    }
-
-    @Override
-    public boolean isActive() {
-        return true;
-    }
-
-    @Override
-    public boolean go(int distance, Area area, Human human) {
-        if (area == Area.PLAIN && !isPlainGo()) {
+    public boolean go(int distance, Area area) {
+        if (area == Area.PLAIN && !Area.PLAIN.isForBike()) {
             System.out.println("Велосипед не может проехать по равнине." );
             return false;
         }
-        if (area == Area.FOREST && !isForestGo()) {
+        if (area == Area.FOREST && !Area.FOREST.isForBike()) {
             System.out.println("Велосипед не может проехать по лесу." );
             return false;
         }
-        if (area == Area.SWAMP && !isSwampGo()) {
+        if (area == Area.SWAMP && !Area.SWAMP.isForBike()) {
             System.out.println("Велосипед не может проехать по болоту." );
             return false;
         }
-        if (human.getEndurance() < (int)distance*0.4) {
-            System.out.println("Человек не может проехать на велосипеде. Не хватает сил." );
-            return false;
-        }
-
-        int endurance = human.getEndurance();
-        endurance -= (int)distance*0.4;
-        human.setEndurance(endurance);
-        System.out.println("Человек проехал на велосипеде дистанцию " + distance + ". Осталось сил у человека: " + human.getEndurance());
         return true;
     }
 }

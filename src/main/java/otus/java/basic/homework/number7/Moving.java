@@ -17,27 +17,36 @@ public class Moving {
         System.out.println("Человеку по имени "+ human.getName()+ " надо добраться домой с работы.");
         System.out.print("Введите дистанцию в километрах:");
         int distance = scanner.nextInt();
-        System.out.println("---------------------------------");
 
         for (Area area : Area.values()) {
+            System.out.println("---------------------------------");
             System.out.println("Местность: " + area.getTitle());
             System.out.println();
                 for (Transport t:transports) {
                     human.setCurrentTransport(t);
-                    System.out.println("Текущий транспорт: " + human.getCurrentTransport(t));
-                    if (t.go(distance, area, human)) {
+
+                    System.out.println("На текущий момент сил у человека: " + human.getEndurance());
+                    if (!t.isStatus()) {
+                        System.out.println("Текущий транспорт: " + human.getCurrentTransport(t) + ". Статус: занят. Попробуем другой транспорт.");
                         System.out.println();
                         continue;
                     }
+                    System.out.println("Текущий транспорт: " + human.getCurrentTransport(t) + ". Статус: свободен.");
+                    t.setStatus(false);
+                    if (t.go(distance, area)) {
+                        if (!human.getActive(distance)) {
+                            continue;
+                        }
+                    }
+                    t.setStatus(true);
                     System.out.println();
                 }
-                System.out.println();
-                if (human.go(distance)) {
+                human.setCurrentTransport(null);
+                if (human.go(distance, area)) {
                     continue;
                 }
-            System.out.println("-------------------------");
-            }
+            System.out.println();
         }
-
-
+        System.out.println("---------------------------------");
+    }
 }

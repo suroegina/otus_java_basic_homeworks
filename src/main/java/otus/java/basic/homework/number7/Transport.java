@@ -1,11 +1,8 @@
 package otus.java.basic.homework.number7;
 
 public interface Transport {
-    boolean isActive();
-    boolean go(int distance, Area area, Human human);
-    boolean isForestGo();
-    boolean isSwampGo();
-    boolean isPlainGo();
+    boolean go(int distance, Area area);
     String getName();
-
+    boolean isStatus();
+    void setStatus(boolean status);
 }

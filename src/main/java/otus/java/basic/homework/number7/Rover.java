@@ -1,10 +1,18 @@
 package otus.java.basic.homework.number7;
 
 public class Rover implements Transport{
-    private boolean isForestGo = true;
-    private boolean isSwampGo = true;
-    private boolean isPlainGo = true;
     private int fuel;
+    private boolean status = true;
+
+    @Override
+    public boolean isStatus() {
+        return status;
+    }
+
+    @Override
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 
     public Rover(int fuel) {
         this.fuel = fuel;
@@ -19,32 +27,8 @@ public class Rover implements Transport{
         return fuel;
     }
 
-
     @Override
-    public boolean isForestGo() {
-        return isForestGo;
-    }
-
-    @Override
-    public boolean isSwampGo() {
-        return isSwampGo;
-    }
-
-    @Override
-    public boolean isPlainGo() {
-        return isPlainGo;
-    }
-
-    @Override
-    public boolean isActive() {
-        if (fuel > 0) {
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean go(int distance, Area area, Human human) {
+    public boolean go(int distance, Area area) {
         if (fuel < 10 * distance/100) {
             System.out.println("Вездеход не может проехать дистанцию " + distance + ". Не хватает бензина." );
             return false;
