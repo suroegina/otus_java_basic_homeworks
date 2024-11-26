@@ -14,16 +14,16 @@ public class Homework8 {
         System.out.println("Сумма всех элементов массива: " + getArraySum(arrayStr));
         System.out.println();
 
-//        String[][] arrayStr1 = {
-//                {"1", "2", "3", "4", "8"},
-//                {"1", "2", "0", "4", "7"},
-//                {"1", "2", "3", "4", "9"},
-//                {"1", "2", "3", "4", "0"}
-//        };
-//        printArray(arrayStr1);
-//        System.out.println("Сумма всех элементов массива: " + getArraySum(arrayStr1));
-//
-//        System.out.println();
+        String[][] arrayStr1 = {
+                {"1", "2", "3", "4", "8"},
+                {"1", "2", "0", "4", "7"},
+                {"1", "2", "3", "4", "9"},
+                {"1", "2", "3", "4", "0"}
+        };
+        printArray(arrayStr1);
+        System.out.println("Сумма всех элементов массива: " + getArraySum(arrayStr1));
+
+        System.out.println();
 
         String[][] arrayStr2 = {
                 {"1", "2", "3", "4"},
@@ -45,19 +45,36 @@ public class Homework8 {
         }
     }
 
-    public static int getArraySum (String[][] array) throws AppArrayDataException {
-        if (array.length != 4 || array[0].length != 4) {
-            throw new AppArraySizeException("Дмумерный массив должен быть размером 4х4");
-        }
-        int[][] arrayInt = new int[4][4];
-        int sum = 0;
-        int currentX = 0;
-        int currentY = 0;
+    public static boolean isIntegerRegex(String str) {
+        return str.matches("\\d");
+    }
+
+    public static boolean isInteger(String s) {
         try {
+            Integer.parseInt(s);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public static int getArraySum (String[][] array) {
+        try {
+            if (array.length != 4 || array[0].length != 4) {
+                throw new AppArraySizeException("Двумерный массив должен быть размером 4х4");
+            }
+            int[][] arrayInt = new int[4][4];
+            int sum = 0;
+            int currentX = 0;
+            int currentY = 0;
             for (int i = 0; i < array.length; i++) {
                 for (int j = 0; j < array[i].length; j++) {
                     currentX = i;
                     currentY = j;
+                    if (!isIntegerRegex(array[i][j])) {
+                        throw new AppArrayDataException("В ячейке [" + currentX + "][" + currentY + "] значение '"
+                                + array[currentX][currentY] + "' невозможно преобразовать в тип int.");
+                    }
                     arrayInt[i][j] = Integer.parseInt(array[i][j]);
                 }
             }
@@ -67,9 +84,10 @@ public class Homework8 {
                 }
             }
             return sum;
-        } catch (Exception e) {
-            throw new AppArrayDataException("В ячейке [" + currentX + "][" + currentY + "] значение '" + array[currentX][currentY] + "' невозможно преобразовать в тип int.");
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
         }
+        return -1;
     }
 }
 
