@@ -48,6 +48,9 @@ public class Homework9 {
 
     public static ArrayList<Integer> getList(int min, int max) {
         ArrayList<Integer> newList = new ArrayList<>();
+        if (min > max) {
+            throw new IllegalArgumentException("min > max!");
+        }
         for (int i = min; i < max + 1 ; i++) {
             newList.add(i);
         }
@@ -76,22 +79,22 @@ public class Homework9 {
         for (int i = 0; i < inList.size(); i++) {
             inList.set(i, inList.get(i) + num);
         }
-        System.out.println("Новый список из значений уыеличенных на  " + num + ": " + inList);
+        System.out.println("Новый список из значений увеличенных на  " + num + ": " + inList);
     }
 
     public static ArrayList<String> getEmloyesName(ArrayList<Employee> employeesList) {
         ArrayList<String> employesNameList = new ArrayList<>();
-        for (int i = 0; i < employeesList.size(); i++) {
-            employesNameList.add(employeesList.get(i).getName());
+        for (Employee employee : employeesList) {
+            employesNameList.add(employee.getName());
         }
         return employesNameList;
     }
 
     public static ArrayList<Employee> getAgeEmployees(ArrayList<Employee> employeesList, int minAge) {
         ArrayList<Employee> employesAgeList = new ArrayList<>();
-        for (int i = 0; i < employeesList.size(); i++) {
-            if (employeesList.get(i).getAge() >= minAge) {
-                employesAgeList.add(employeesList.get(i));
+        for (Employee employee : employeesList) {
+            if (employee.getAge() >= minAge) {
+                employesAgeList.add(employee);
             }
         }
         return employesAgeList;
@@ -105,9 +108,9 @@ public class Homework9 {
     public static void getAvgAgeEmployees(ArrayList<Employee> employeesList, int avgAge) {
         System.out.println("Список сотрудников старше среднего возраста " + avgAge + ":");
         ArrayList<Employee> employesAgeList = new ArrayList<>();
-        for (int i = 0; i < employeesList.size(); i++) {
-            if (employeesList.get(i).getAge() >= avgAge) {
-                employesAgeList.add(employeesList.get(i));
+        for (Employee employee : employeesList) {
+            if (employee.getAge() >= avgAge) {
+                employesAgeList.add(employee);
             }
         }
         printEmployees(employesAgeList);
