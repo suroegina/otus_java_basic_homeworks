@@ -2,7 +2,7 @@ package otus.java.basic.homework.number7;
 
 public class Human{
     final String name;
-    private Transport currentTransport;
+    public Transport currentTransport;
     private int endurance = 100;
 
     public Human(String name) {
@@ -31,11 +31,11 @@ public class Human{
 
     public boolean humanAble(int distance, float precent) {
         if (endurance < (int)(distance * precent)) {
-            System.out.println("Человек не осилит дистанцию " + distance + " пешком." );
+            System.out.println("Человек не осилит дистанцию " + distance + "." );
             return false;
         }
         lowEndurance(distance, precent);
-        System.out.println("Человек прошел дистанцию " + distance + ". Осталось сил у человека: " + endurance );
+        System.out.println("Человек осилил дистанцию " + distance + ". Осталось сил у человека: " + endurance );
         return true;
     }
 
@@ -46,7 +46,7 @@ public class Human{
         } else if (area == Area.FOREST) {
             return humanAble(distance, 0.5f);
         } else {
-            return humanAble(distance, 0.4f);
+            return humanAble(distance, 0.3f);
         }
     }
 
@@ -55,18 +55,7 @@ public class Human{
         setEndurance(endurance);
     }
 
-    public boolean getActive(int distance) {
-        if (getCurrentTransport(currentTransport).equals("велосипед") ) {
-            if (getEndurance() < (int)distance*0.4) {
-                System.out.println("Человек не может проехать на велосипеде. Не хватает сил." );
-                return false;
-            }
-            lowEndurance(distance, 0.4f);
-            System.out.println("Человек проехал на велосипеде дистанцию " + distance + ". Осталось сил у человека: " + getEndurance());
-            return true;
-        }
-        return true;
-    }
+
 
 
 

@@ -3,6 +3,10 @@ package otus.java.basic.homework.number7;
 public class Horse implements Transport {
     private int endurance;
     private boolean status = true;
+    final boolean isPlainEnable = true;
+    final boolean isForestEnable = true;
+    final boolean isSwampEnable = false;
+    final TransportTitle title = TransportTitle.HORSE;
 
     @Override
     public boolean isStatus() {
@@ -16,7 +20,7 @@ public class Horse implements Transport {
 
     @Override
     public String getName() {
-        return "лошадь";
+        return title.getTitle();
     }
 
     public Horse(int endurance) {
@@ -28,14 +32,14 @@ public class Horse implements Transport {
     }
 
     @Override
-    public boolean go(int distance, Area area) {
-        if (area == Area.PLAIN && !Area.PLAIN.isForHorse()) {
+    public boolean go(int distance, Area area, Human driver) {
+        if (area == Area.PLAIN && !isPlainEnable) {
             System.out.println("Лошадь не может пройти по равнине." );
             return false;
-        } else if (area == Area.FOREST && !Area.FOREST.isForHorse()) {
+        } else if (area == Area.FOREST && !isForestEnable) {
             System.out.println("Лошадь не может пройти по лесу." );
             return false;
-        }else if (area == Area.SWAMP && !Area.SWAMP.isForHorse()) {
+        }else if (area == Area.SWAMP && !isSwampEnable) {
             System.out.println("Лошадь не может пройти по болоту." );
             return false;
         } else if (endurance < 0.4 * distance) {

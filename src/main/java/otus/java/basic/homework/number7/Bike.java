@@ -1,8 +1,12 @@
 package otus.java.basic.homework.number7;
 
 public class Bike implements Transport{
-    private boolean humanInto;
+    Human driver;
     private boolean status = true;
+    final boolean isPlainEnable = true;
+    final boolean isForestEnable = true;
+    final boolean isSwampEnable = false;
+    final TransportTitle title = TransportTitle.BIKE;
 
     @Override
     public boolean isStatus() {
@@ -16,22 +20,26 @@ public class Bike implements Transport{
 
     @Override
     public String getName() {
-        return "велосипед";
+        return title.getTitle();
     }
 
     @Override
-    public boolean go(int distance, Area area) {
-        if (area == Area.PLAIN && !Area.PLAIN.isForBike()) {
+    public boolean go(int distance, Area area, Human driver) {
+        if (area == Area.PLAIN && !isPlainEnable) {
             System.out.println("Велосипед не может проехать по равнине." );
             return false;
-        } else if (area == Area.FOREST && !Area.FOREST.isForBike()) {
+        } else if (area == Area.FOREST && !isForestEnable) {
             System.out.println("Велосипед не может проехать по лесу." );
             return false;
-        } else if (area == Area.SWAMP && !Area.SWAMP.isForBike()) {
+        } else if (area == Area.SWAMP && !isSwampEnable) {
             System.out.println("Велосипед не может проехать по болоту." );
             return false;
         } else {
-            return true;
+            if (driver.humanAble(distance, 0.4f)) {
+                return true;
+            }
+            System.out.println("У человека нет сил, чтобы на велосипеде проехать." );
+            return false;
         }
     }
 }
