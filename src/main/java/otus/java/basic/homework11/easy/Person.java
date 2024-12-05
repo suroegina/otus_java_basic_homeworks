@@ -24,6 +24,6 @@ public class Person {
     }
 
     public void print() {
-        System.out.println(getId() + " - " + getName());
+        System.out.println(getId() + " - " + getName() + " - " + getPosition());
     }
 }

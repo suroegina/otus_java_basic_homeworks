@@ -1,40 +1,38 @@
 package otus.java.basic.homework11.easy;
 
-import java.util.ArrayList;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class PersonDataBase {
-    ArrayList<Person> personList;
+    HashMap<Long, Person> personList;
 
-    public PersonDataBase(ArrayList<Person> person) {
+    public PersonDataBase(HashMap<Long, Person> person) {
         this.personList = person;
     }
 
     public Person findById(Long id) {
-        for (Person p: personList) {
-            if (p.getId().longValue() == id.longValue()) {
-                System.out.println("Найден сотрудник c id " + p.getId() + " - " + p.getName());
-                return p;
-            }
-        }
-        System.out.println("Такого сотрудника нет в списке с id " + id);
-        return null;
+        return personList.get(id);
     }
 
     public void add(Person person) {
-        personList.add(person);
+        personList.put(person.getId(), person);
     }
 
     public void printList() {
-        for (Person p: personList) {
-            System.out.println(p.getId() + " - " + p.getName());
+        System.out.println("Список сотрудников:");
+        for (Person p: personList.values()) {
+            System.out.println(p.getId() + " - " + p.getName() + " - " + p.getPosition());
         }
     }
 
     public boolean isManager(Person person) {
-        return person.getPosition() == Position.MANAGER ||
-                person.getPosition() == Position.DIRECTOR ||
-                person.getPosition() == Position.BRANCH_DIRECTOR ||
-                person.getPosition() == Position.SENIOR_MANAGER;
+        TreeSet<Position> managers = new TreeSet<>();
+        managers.add(Position.MANAGER);
+        managers.add(Position.DIRECTOR);
+        managers.add(Position.BRANCH_DIRECTOR);
+        managers.add(Position.SENIOR_MANAGER);
+
+        return managers.contains(person.getPosition());
     }
 
     public boolean isEmployee(Long id) {
