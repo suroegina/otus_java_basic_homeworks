@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        File folder = new File("C:\\Users\\User\\IdeaProjects\\otus_java_basic_homework\\src\\main\\resources");
+        File folder = new File("src/main/resources/");
         System.out.println("Список файлов:");
         for (File file : folder.listFiles()) {
             System.out.println(file.getName());
@@ -43,7 +43,7 @@ public class Main {
 
     }
     private static void readFile(String fileName) {
-        try (FileInputStream in = new FileInputStream("C:\\Users\\User\\IdeaProjects\\otus_java_basic_homework\\src\\main\\resources\\" +fileName )) {
+        try (FileInputStream in = new FileInputStream("src/main/resources/" +fileName )) {
             byte[] buf = new byte[128];
             int n = in.read(buf);
             while (n > 0) {
@@ -56,7 +56,7 @@ public class Main {
     }
 
     private static void writeInFile(String fileName, String text) {
-        try (FileOutputStream out = new FileOutputStream("C:\\Users\\User\\IdeaProjects\\otus_java_basic_homework\\src\\main\\resources\\" +fileName, true)) {
+        try (FileOutputStream out = new FileOutputStream("src/main/resources/" +fileName, true)) {
             byte[] buffer = text.getBytes(StandardCharsets.UTF_8);
             out.write(buffer);
         } catch (IOException e) {
