@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Server {
-    private static final List<ClientHandler> clientHandlers = new ArrayList<>();
-
     public static void main(String[] args) throws IOException {
         ServerSocket socket = new ServerSocket(8080);
         System.out.println("SERVER APPLICATION RUN!");
@@ -21,8 +19,6 @@ public class Server {
             DataInputStream inputStream = new DataInputStream(client.getInputStream());
             DataOutputStream outputStream = new DataOutputStream(client.getOutputStream());
             System.out.println("Клиент с портом :" + client.getPort() + " подключился!");
-            ClientHandler clientHandler = new ClientHandler(client, inputStream, outputStream);
-            clientHandlers.add(clientHandler);
             outputStream.writeUTF("Доступны математические операции: +, -, /, *.");
             int num1,num2;
             float result = 0.0f;
@@ -36,7 +32,6 @@ public class Server {
                     break;
                 } catch (NumberFormatException e) {
                     System.out.println("Ошибка! " + e.getMessage());
-                    continue;
                 }
             }
             while (true) {
@@ -47,7 +42,6 @@ public class Server {
                     break;
                 } catch (NumberFormatException e) {
                     System.out.println("Ошибка! " + e.getMessage());
-                    continue;
                 }
             }
             while (true) {
@@ -78,17 +72,13 @@ public class Server {
                                 break;
                         }
                         break;
-                    } else {
-                        continue;
                     }
-
             }
-            outputStream.writeUTF("Результат: " + num1 + operation + num2 + "=" + result + "\nНапишите 'YES' чтобы продолжить, 'NO' - выйти из приложения.");
+            outputStream.writeUTF("Результат: " + num1 + operation + num2 + "=" + result + "\nНапишите 'y' чтобы продолжить, 'n' - выйти из приложения.");
             String userInput = inputStream.readUTF();
-            if (userInput.equals("YES")) {
+            if (userInput.equals("y")) {
                 System.out.println("Клиент с портом :" + client.getPort() + " отключился!");
                 client.close();
-                continue;
             } else {
                 client.close();
                 break;

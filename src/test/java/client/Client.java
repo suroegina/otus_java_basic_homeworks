@@ -16,19 +16,17 @@ public class Client {
                 client.hello();
                 while (true) {
                     String userMessage = scanner.nextLine();
-                    if (userMessage.equals("YES")) {
+                    if (userMessage.equals("y")) {
                         client.send(userMessage);
                         break;
-                    } else if (userMessage.equals("NO")) {
+                    } else if (userMessage.equals("n")) {
                         break;
                     }
                     client.send(userMessage);
                 }
-
             } catch (IOException e) {
                 break;
             }
-            //break;
         }
     }
 }
