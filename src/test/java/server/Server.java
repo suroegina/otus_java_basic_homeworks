@@ -23,7 +23,6 @@ public class Server {
             int num1,num2;
             float result = 0.0f;
             String operation;
-
             while (true) {
                 outputStream.writeUTF("Введите первое число: ");
                 String userInput = inputStream.readUTF();
@@ -83,8 +82,6 @@ public class Server {
                 client.close();
                 break;
             }
-
         }
     }
-
 }
