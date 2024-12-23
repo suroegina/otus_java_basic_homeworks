@@ -31,11 +31,17 @@ public class ClientHandler {
                     if (message.startsWith("/")) {
                         String[] substr = message.split(" ", 3);
                         if (substr[0].equalsIgnoreCase("/w")){
-                            server.privateMessage(this, substr[1],substr[2]);
-                            continue;
+                            try {
+                                server.privateMessage(this, substr[1], userName + " (лично вам): " + substr[2]);
+                            } catch (ArrayIndexOutOfBoundsException e) {
+                                server.privateMessage(this, userName, "Некорректная команда. Пример: /w username message_to_user");
+                            }
+                        } else if (message.startsWith("/exit")) {
+                            sendMsg("/exitok");
+                            break;
+                        } else {
+                            server.privateMessage(this, userName, "Такой команды нет.");
                         }
-                        sendMsg("/exitok");
-                        break;
                     } else {
                         server.brosdcastMessage(userName + " : " + message);
                     }
