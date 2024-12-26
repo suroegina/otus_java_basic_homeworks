@@ -23,8 +23,22 @@ public class Client {
                     String message = in.readUTF();
                     if (message.startsWith("/")) {
                         if (message.equalsIgnoreCase("/exitok")) {
+                            System.out.println("Успешно вышли из чата.");
                             break;
                         }
+                        if (message.startsWith("/authok ")) {
+                            System.out.println("Удалось успешно войти в чат с именем пользователя "
+                                    + message.split(" ")[1]);
+                        }
+                        if (message.startsWith("/regok ")) {
+                            System.out.println("Удалось успешно зарегистрироваться с именем пользователя "
+                                    + message.split(" ")[1]);
+                        }
+                        if (message.startsWith("/kickok ")) {
+                            System.out.println("Администратор удалил из чата пользователя с именем "
+                                    + message.split(" ")[1]);
+                        }
+
                     } else {
                         System.out.println(message);
                     }
@@ -67,4 +81,5 @@ public class Client {
             e.printStackTrace();
         }
     }
+
 }
