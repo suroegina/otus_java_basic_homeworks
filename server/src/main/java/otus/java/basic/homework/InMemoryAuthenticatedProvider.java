@@ -131,6 +131,7 @@ public class InMemoryAuthenticatedProvider implements AuthenticatedProvider{
             ClientHandler moveClient = server.findClientByUsername(username);
             moveClient.sendMsg("Администратор вас удалил из чата.");
             moveClient.disconnect();
+            //server.unsubscribe(moveClient);
             clientHandler.sendMsg("/kickok " + username);
             return true;
         }

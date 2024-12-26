@@ -87,7 +87,7 @@ public class ClientHandler {
                             }
                             if (server.getAuthenticatedProvider()
                                     .kick(this, elements[1])){
-                                continue;
+                                server.brosdcastMessage(userName + " удалил из чата " + elements[1]);
                             }
                         } else {
                             server.privateMessage(this, userName, "Такой команды нет.");
@@ -112,6 +112,8 @@ public class ClientHandler {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+
 
     public void sendMsg(String message) {
         try {
