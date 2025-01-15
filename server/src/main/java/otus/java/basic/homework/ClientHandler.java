@@ -27,7 +27,7 @@ public class ClientHandler {
                 // цикл аутентификации
                 while (true) {
                     sendMsg("Для начала работы нужно пройти аутентификацию. Формат команды: /auth login password \n" +
-                            "или регистрацию. Формат команды /reg login password username");
+                            "или регистрацию. Формат команды /reg username password email");
                     String message = in.readUTF();
                     if (message.startsWith("/")) {
                         if (message.equalsIgnoreCase("/exit")) {
@@ -47,7 +47,7 @@ public class ClientHandler {
                                 break;
                             }
                         }
-                        // /reg login password username
+                        // /reg username password email
                         if (message.startsWith("/reg ")) {
                             String[] elements = message.split(" ");
                             if (elements.length != 4) {

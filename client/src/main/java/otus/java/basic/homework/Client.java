@@ -37,6 +37,7 @@ public class Client {
                         if (message.startsWith("/kickok")) {
                             System.out.println("Пользователь с именем "
                                     + message.split(" ")[1] + " успешно удалился из чата");
+                            break;
                         }
 
                     } else {

@@ -1,42 +1,25 @@
 package otus.java.basic.homework;
 
+import java.sql.SQLException;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class InMemoryAuthenticatedProvider implements AuthenticatedProvider{
-
-    private class User {
-        private String login;
-        private String password;
-        private String username;
-        private UserRole role;
-
-        public User(String login, String password, String username, UserRole role) {
-            this.login = login;
-            this.password = password;
-            this.username = username;
-            this.role = role;
-        }
-
-        public UserRole getRole() {
-            return role;
-        }
-    }
-
     private List<User> users;
     private Server server;
 
     public InMemoryAuthenticatedProvider(Server server) {
         this.server = server;
-        this.users = new CopyOnWriteArrayList<User>();
-        users.add(new User("user1","user1", "username1", UserRole.USER));
-        users.add(new User("user2","user2", "username2", UserRole.USER));
-        users.add(new User("user3","user3", "username3", UserRole.USER));
-        users.add(new User("admin1","admin1", "administrator1", UserRole.ADMIN));
-        users.add(new User("admin2","admin2", "administrator2", UserRole.ADMIN));
-
-
-
+        try {
+            UserServiceJDBC userServiceJDBC = new UserServiceJDBCImpl();
+            System.out.println("userServiceJDBC.getAll() = " + userServiceJDBC.getAll());
+            this.users = userServiceJDBC.getAll();
+            for (User user : users) {
+                System.out.println("Пользователь с ID = " + user.getId() + " является администратором?\n" +
+                        userServiceJDBC.isAdmin(user.getUsername()));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -46,8 +29,8 @@ public class InMemoryAuthenticatedProvider implements AuthenticatedProvider{
 
     private String getUsernameByLoginAndPassword (String login, String password) {
         for (User u : users) {
-            if (u.login.equalsIgnoreCase(login) && u.password.equals(password)) {
-                return u.username;
+            if (u.getUsername().equalsIgnoreCase(login) && u.getPassword().equals(password)) {
+                return u.getUsername();
             }
         }
         return null;
@@ -72,7 +55,7 @@ public class InMemoryAuthenticatedProvider implements AuthenticatedProvider{
 
     private boolean isLoginAlreadyExists(String login) {
         for (User u: users) {
-            if (u.login.equalsIgnoreCase(login)) {
+            if (u.getUsername().equalsIgnoreCase(login)) {
                 return true;
             }
         }
@@ -81,7 +64,7 @@ public class InMemoryAuthenticatedProvider implements AuthenticatedProvider{
 
     private boolean isUsernameAlreadyExists(String username) {
         for (User u: users) {
-            if (u.username.equalsIgnoreCase(username)) {
+            if (u.getUsername().equalsIgnoreCase(username)) {
                 return true;
             }
         }
@@ -89,13 +72,13 @@ public class InMemoryAuthenticatedProvider implements AuthenticatedProvider{
     }
 
     @Override
-    public boolean registration(ClientHandler clientHandler, String login, String password, String username) {
+    public boolean registration(ClientHandler clientHandler, String username, String password, String email) throws SQLException {
         // /reg login password username
-        if (login.length() < 3 || password.length() < 3 || username.length() < 3 ) {
-            clientHandler.sendMsg("Логин 3+ символа, пароль 3+ символа, имя пользователя 3+ символа");
+        if (username.length() < 3 || password.length() < 3 ) {
+            clientHandler.sendMsg("Пароль 3+ символа, имя пользователя 3+ символа");
             return false;
         }
-        if (isLoginAlreadyExists(login)) {
+        if (isLoginAlreadyExists(username)) {
             clientHandler.sendMsg("Указанный логин уже занят.");
             return false;
         }
@@ -103,8 +86,9 @@ public class InMemoryAuthenticatedProvider implements AuthenticatedProvider{
             clientHandler.sendMsg("Указанное имя пользователя уже занято.");
             return false;
         }
-
-        users.add(new User(login, password, username, UserRole.USER));
+        UserServiceJDBC userServiceJDBC = new UserServiceJDBCImpl();
+        userServiceJDBC.addUser(username, password, email);
+        users = userServiceJDBC.getAll();
         clientHandler.setUserName(username);
         server.subscribe(clientHandler);
         clientHandler.sendMsg("/regok " + username);
@@ -112,18 +96,11 @@ public class InMemoryAuthenticatedProvider implements AuthenticatedProvider{
         return true;
     }
 
-    private boolean isAdmin(ClientHandler clientHandler) {
-        for (User u : users) {
-            if (u.username.equalsIgnoreCase(clientHandler.getUserName()) && u.role == UserRole.ADMIN ) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     @Override
-    public boolean kick(ClientHandler clientHandler, String username) {
-        if (!isAdmin(clientHandler)) {
+    public boolean kick(ClientHandler clientHandler, String username) throws SQLException {
+        UserServiceJDBC userServiceJDBC = new UserServiceJDBCImpl();
+        if (!userServiceJDBC.isAdmin(clientHandler.getUserName())) {
             clientHandler.sendMsg("Нет прав для выполнения такой команды.");
             return false;
         }
