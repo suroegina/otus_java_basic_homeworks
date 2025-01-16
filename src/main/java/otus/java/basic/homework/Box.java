@@ -8,7 +8,7 @@ public class Box <T extends Fruit>{
     private List<T> fruitsList = new ArrayList<>();
 
     public double getWeight() {
-        return weightBox;
+        return this.weightBox;
     }
 
     public List<T> getFruitsList() {
@@ -17,13 +17,14 @@ public class Box <T extends Fruit>{
 
     public void setFruitsList(List<T> fruitsList) {
         this.fruitsList.addAll(fruitsList);
+        this.weightBox = weight();
     }
 
 
     public void addFruit(T fruit) {
         fruitsList.add(fruit);
+        this.weightBox += fruit.getWeight();
     }
-
     public double weight() {
         double sum = 0.0;
         for (T fruits: fruitsList) {
@@ -32,13 +33,14 @@ public class Box <T extends Fruit>{
         weightBox = sum;
         return sum;
     }
-
     public boolean compare(Box<?> otherBox) {
-        return Math.abs(this.getWeight() - otherBox.getWeight()) < 0.00001;
+        return Math.abs(this.weight() - otherBox.weight()) < 0.00001;
     }
 
     public void move(Box<T> otherBox) {
         otherBox.setFruitsList(fruitsList);
         fruitsList.clear();
     }
+
+
 }
