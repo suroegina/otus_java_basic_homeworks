@@ -27,7 +27,6 @@ public class Server {
 
         } catch (IOException e) {
             e.printStackTrace();
-            //throw new RuntimeException(e);
         }
 
     }

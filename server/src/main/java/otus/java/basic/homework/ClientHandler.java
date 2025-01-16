@@ -24,17 +24,15 @@ public class ClientHandler {
         new Thread(()->{
             try {
                 System.out.println("Клиент подключился на порту: " + socket.getPort());
-                // цикл аутентификации
                 while (true) {
                     sendMsg("Для начала работы нужно пройти аутентификацию. Формат команды: /auth login password \n" +
-                            "или регистрацию. Формат команды /reg login password username");
+                            "или регистрацию. Формат команды /reg username password email");
                     String message = in.readUTF();
                     if (message.startsWith("/")) {
                         if (message.equalsIgnoreCase("/exit")) {
                             sendMsg("/exitok");
                             break;
                         }
-                        // /auth login password
                         if (message.startsWith("/auth ")) {
                             String[] elements = message.split(" ");
                             if (elements.length != 3) {
@@ -47,7 +45,6 @@ public class ClientHandler {
                                 break;
                             }
                         }
-                        // /reg login password username
                         if (message.startsWith("/reg ")) {
                             String[] elements = message.split(" ");
                             if (elements.length != 4) {
@@ -62,7 +59,6 @@ public class ClientHandler {
                         }
                     }
                 }
-                // цикл работы
                 while (auth) {
                     String message = in.readUTF();
                     if (message.startsWith("/")) {
@@ -78,7 +74,6 @@ public class ClientHandler {
                             sendMsg("/exitok");
                             break;
                         } else if (message.startsWith("/kick")) {
-                            // /kick username
                             String[] elements = message.split(" ");
 
                             if (elements.length != 2) {
@@ -87,7 +82,7 @@ public class ClientHandler {
                             }
                             if (server.getAuthenticatedProvider()
                                     .kick(this, elements[1])){
-                                continue;
+                                server.brosdcastMessage(userName + " удалил из чата " + elements[1]);
                             }
                         } else {
                             server.privateMessage(this, userName, "Такой команды нет.");
@@ -112,6 +107,8 @@ public class ClientHandler {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+
 
     public void sendMsg(String message) {
         try {

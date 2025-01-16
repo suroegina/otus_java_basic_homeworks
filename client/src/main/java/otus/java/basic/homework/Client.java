@@ -26,17 +26,18 @@ public class Client {
                             System.out.println("Успешно вышли из чата.");
                             break;
                         }
-                        if (message.startsWith("/authok ")) {
+                        if (message.startsWith("/authok")) {
                             System.out.println("Удалось успешно войти в чат с именем пользователя "
                                     + message.split(" ")[1]);
                         }
-                        if (message.startsWith("/regok ")) {
+                        if (message.startsWith("/regok")) {
                             System.out.println("Удалось успешно зарегистрироваться с именем пользователя "
                                     + message.split(" ")[1]);
                         }
-                        if (message.startsWith("/kickok ")) {
-                            System.out.println("Администратор удалил из чата пользователя с именем "
-                                    + message.split(" ")[1]);
+                        if (message.startsWith("/kickok")) {
+                            System.out.println("Пользователь с именем "
+                                    + message.split(" ")[1] + " успешно удалился из чата");
+                            break;
                         }
 
                     } else {
