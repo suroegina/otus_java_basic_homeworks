@@ -1,22 +1,24 @@
 package otus.java.basic.homework;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Box <T extends Fruit>{
     private double weightBox;
-    private ArrayList<T> fruitsList = new ArrayList<>();
+    private List<T> fruitsList = new ArrayList<>();
 
     public double getWeight() {
         return weightBox;
     }
 
-    public ArrayList<T> getFruitsList() {
+    public List<T> getFruitsList() {
         return fruitsList;
     }
 
-    public void setFruitsList(ArrayList<T> fruitsList) {
-        this.fruitsList = fruitsList;
+    public void setFruitsList(List<T> fruitsList) {
+        this.fruitsList.addAll(fruitsList);
     }
+
 
     public void addFruit(T fruit) {
         fruitsList.add(fruit);
@@ -32,11 +34,11 @@ public class Box <T extends Fruit>{
     }
 
     public boolean compare(Box<?> otherBox) {
-        return this.getWeight() == otherBox.getWeight();
+        return Math.abs(this.getWeight() - otherBox.getWeight()) < 0.00001;
     }
 
     public void move(Box<T> otherBox) {
         otherBox.setFruitsList(fruitsList);
-        fruitsList = new ArrayList<>();
+        fruitsList.clear();
     }
 }

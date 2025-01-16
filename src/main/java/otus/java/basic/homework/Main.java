@@ -32,6 +32,16 @@ public class Main {
         System.out.println("Коробка 1: " + boxApple.getFruitsList().toString() );
         System.out.println("Коробка 2: " + boxApple2.getFruitsList().toString() );
 
+        System.out.println("\nПереложим апельсины из одной коробки в другую:");
+        System.out.println("БЫЛО");
+        System.out.println("Коробка 1: " + boxOrange.getFruitsList().toString() );
+        System.out.println("Коробка 2: " + boxOrange2.getFruitsList().toString() );
+        boxOrange.move(boxOrange2);
+
+        System.out.println("СТАЛО");
+        System.out.println("Коробка 1: " + boxOrange.getFruitsList().toString() );
+        System.out.println("Коробка 2: " + boxOrange2.getFruitsList().toString() );
+
 
     }
 }
