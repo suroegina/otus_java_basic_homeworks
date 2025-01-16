@@ -42,6 +42,13 @@ public class Main {
         System.out.println("Коробка 1: " + boxOrange.getFruitsList().toString() );
         System.out.println("Коробка 2: " + boxOrange2.getFruitsList().toString() );
 
+        System.out.println("\nДобавим апельсин весом 0.7 в коробку 2.");
+        boxOrange2.addFruit(new Orange(0.7));
+
+        System.out.println("Вес коробки 2 с яблоками совпадает с весом коробки 2 с апельсном? " + (boxApple2.compare(boxOrange2)?"да":"нет"));
+
+
+
 
     }
 }
