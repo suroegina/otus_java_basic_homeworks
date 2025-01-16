@@ -17,7 +17,7 @@ public class InMemoryAuthenticatedProvider implements AuthenticatedProvider{
                 System.out.println("Пользователь с ID = " + user.getId() + " является администратором?\n" +
                         userServiceJDBC.isAdmin(user.getUsername()));
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
