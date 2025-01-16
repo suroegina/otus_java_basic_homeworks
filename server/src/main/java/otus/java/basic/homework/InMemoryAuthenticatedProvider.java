@@ -73,7 +73,6 @@ public class InMemoryAuthenticatedProvider implements AuthenticatedProvider{
 
     @Override
     public boolean registration(ClientHandler clientHandler, String username, String password, String email) throws SQLException {
-        // /reg login password username
         if (username.length() < 3 || password.length() < 3 ) {
             clientHandler.sendMsg("Пароль 3+ символа, имя пользователя 3+ символа");
             return false;
@@ -108,7 +107,6 @@ public class InMemoryAuthenticatedProvider implements AuthenticatedProvider{
             ClientHandler moveClient = server.findClientByUsername(username);
             moveClient.sendMsg("Администратор вас удалил из чата.");
             moveClient.disconnect();
-            //server.unsubscribe(moveClient);
             clientHandler.sendMsg("/kickok " + username);
             return true;
         }

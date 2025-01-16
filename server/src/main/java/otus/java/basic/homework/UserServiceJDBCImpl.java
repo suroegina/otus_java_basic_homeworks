@@ -22,10 +22,15 @@ public class UserServiceJDBCImpl implements UserServiceJDBC{
     private static final String USER_ADD_QUERY = "insert into users (username, password, email) values (?,?,?)";
 
 
-    private final Connection connection;
+    private Connection connection;
 
-    public UserServiceJDBCImpl() throws SQLException {
-        this.connection = DriverManager.getConnection(DATABASE_URL, "admin", "password");
+    public UserServiceJDBCImpl() {
+        try {
+            this.connection = DriverManager.getConnection(DATABASE_URL, "admin", "password");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
