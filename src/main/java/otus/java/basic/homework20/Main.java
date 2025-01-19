@@ -13,23 +13,19 @@ public class Main {
         String filename = scanner.nextLine();
         int count = 0;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filename))){
-            System.out.println("\nОпределим сколько раз в файле встречается искомая последовательность символовю.\nВведите последовательность символов: ");
+            System.out.println("\nОпределим сколько раз в файле встречается искомая последовательность символов.\nВведите последовательность символов: ");
             String chars = scanner.nextLine();
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 int index = line.indexOf(chars);
                 while (index != -1) {
                     count += 1;
-                    try {
-                        index = line.indexOf(chars, index + chars.length());
-                    } catch (StringIndexOutOfBoundsException e) {
-                        break;
-                    }
+                    index = line.indexOf(chars, index + chars.length());
                 }
             }
             System.out.println("В содержимом файла слово '" + chars + "' повторяется " + count + " раз.");
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Ошибка при чтении файла:" + e.getMessage());
         }
 
     }
