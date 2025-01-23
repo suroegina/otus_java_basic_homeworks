@@ -9,64 +9,46 @@ public class PrintChars {
         PrintChars waitNotifySimpleApp = new PrintChars();
         ExecutorService service = Executors.newFixedThreadPool(3);
         service.execute(() -> {
-            waitNotifySimpleApp.printA();
+            waitNotifySimpleApp.print('A');
         });
         service.execute(() -> {
-            waitNotifySimpleApp.printB();
+            waitNotifySimpleApp.print('B');
         });
         service.execute(() -> {
-            waitNotifySimpleApp.printC();
+            waitNotifySimpleApp.print('C');
         });
 
 
         service.shutdown();
     }
-    public void printA() {
-        synchronized (monitor) {
-            try {
-                for (int i = 0; i < 5; i++) {
-                    while (ready.isReady_B() || ready.isReady_C()) {
-                        monitor.wait();
-                    }
-                    System.out.print("A");
-                    monitor.notifyAll();
-                    ready.setReady_B(true);
-                    ready.setReady_A(false);
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 
-    public void printB() {
+    public void print(char ch) {
         synchronized (monitor) {
             try {
                 for (int i = 0; i < 5; i++) {
-                    while (ready.isReady_A() || ready.isReady_C()) {
-                        monitor.wait();
+                    if (ch == 'A') {
+                        while (ready.isReady_B() || ready.isReady_C()) {
+                            monitor.wait();
+                        }
+                        ready.setReady_B(true);
+                        ready.setReady_A(false);
+                    } else if (ch == 'B') {
+                        while (ready.isReady_A() || ready.isReady_C()) {
+                            monitor.wait();
+                        }
+                        ready.setReady_C(true);
+                        ready.setReady_B(false);
+                    } else if (ch == 'C') {
+                        while (ready.isReady_B() || ready.isReady_A()) {
+                            monitor.wait();
+                        }
+                        ready.setReady_A(true);
+                        ready.setReady_C(false);
+                    } else {
+                        continue;
                     }
-                    System.out.print("B");
+                    System.out.print(ch);
                     monitor.notifyAll();
-                    ready.setReady_C(true);
-                    ready.setReady_B(false);
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-    public void printC() {
-        synchronized (monitor) {
-            try {
-                for (int i = 0; i < 5; i++) {
-                    while (ready.isReady_B() || ready.isReady_A()) {
-                        monitor.wait();
-                    }
-                    System.out.print("C");
-                    monitor.notifyAll();
-                    ready.setReady_A(true);
-                    ready.setReady_C(false);
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
