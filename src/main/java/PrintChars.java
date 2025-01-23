@@ -27,23 +27,23 @@ public class PrintChars {
             try {
                 for (int i = 0; i < 5; i++) {
                     if (ch == 'A') {
-                        while (ready.isReady_B() || ready.isReady_C()) {
+                        while (ready.isReadyB() || ready.isReadyC()) {
                             monitor.wait();
                         }
-                        ready.setReady_B(true);
-                        ready.setReady_A(false);
+                        ready.setReadyB(true);
+                        ready.setReadyA(false);
                     } else if (ch == 'B') {
-                        while (ready.isReady_A() || ready.isReady_C()) {
+                        while (ready.isReadyA() || ready.isReadyC()) {
                             monitor.wait();
                         }
-                        ready.setReady_C(true);
-                        ready.setReady_B(false);
+                        ready.setReadyC(true);
+                        ready.setReadyB(false);
                     } else if (ch == 'C') {
-                        while (ready.isReady_B() || ready.isReady_A()) {
+                        while (ready.isReadyB() || ready.isReadyA()) {
                             monitor.wait();
                         }
-                        ready.setReady_A(true);
-                        ready.setReady_C(false);
+                        ready.setReadyA(true);
+                        ready.setReadyC(false);
                     } else {
                         continue;
                     }
