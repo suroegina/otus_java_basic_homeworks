@@ -17,8 +17,6 @@ public class PrintChars {
         service.execute(() ->
             waitNotifySimpleApp.print('C')
         );
-
-
         service.shutdown();
     }
 
