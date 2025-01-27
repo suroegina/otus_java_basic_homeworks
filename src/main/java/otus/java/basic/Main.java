@@ -9,10 +9,6 @@ public class Main {
         int[] arr2 = arrayUtils.getArrayAfterOne(arr1);
         System.out.println(Arrays.toString(arr2));
 
-//        int[] arr3 = {2,2,2,2,2};
-//        int[] arr4 = getArrayAfterOne(arr3);
-//        System.out.println(Arrays.toString(arr4));
-
 
         int[] arr5 = {1,2};
         int[] arr6 = {1,1};
