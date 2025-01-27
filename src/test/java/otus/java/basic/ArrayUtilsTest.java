@@ -59,7 +59,7 @@ class ArrayUtilsTest {
 
     @ParameterizedTest
     @MethodSource("testData1")
-    @DisplayName("Тест метода arrayContainsOneTwo() с параметризацией - TRUE")
+    @DisplayName("Тест метода arrayContainsOneTwo() с параметризацией - через assertTrue")
     void arrayContainsOneTwoTrue(int[] array) {
         Assertions.assertTrue(arrayUtils.arrayContainsOneTwo(array));
     }
@@ -74,7 +74,7 @@ class ArrayUtilsTest {
 
     @ParameterizedTest
     @MethodSource("testData")
-    @DisplayName("Тест метода arrayContainsOneTwo() с параметризацией - FALSE")
+    @DisplayName("Тест метода arrayContainsOneTwo() с параметризацией - через assertFalse")
     void arrayContainsOneTwoFalse(int[] array) {
         Assertions.assertFalse(arrayUtils.arrayContainsOneTwo(array));
     }
@@ -84,6 +84,23 @@ class ArrayUtilsTest {
         return Stream.of(
                 Arguments.of((Object) new int[] {1,1}),
                 Arguments.of((Object) new int[] {1,3})
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("testData5")
+    @DisplayName("Тест метода arrayContainsOneTwo() с параметризацией - через assertEquals")
+    void arrayContainsOneTwo(int[] array, boolean isTrue) {
+        Assertions.assertEquals(arrayUtils.arrayContainsOneTwo(array), isTrue);
+    }
+
+    @MethodSource
+    public static Stream<Arguments> testData5() {
+        return Stream.of(
+                Arguments.of((Object) new int[] {1,1}, false),
+                Arguments.of((Object) new int[] {1,3}, false),
+                Arguments.of((Object) new int[] {1,2}, true),
+                Arguments.of((Object) new int[] {1,2,2,1}, true)
         );
     }
 
