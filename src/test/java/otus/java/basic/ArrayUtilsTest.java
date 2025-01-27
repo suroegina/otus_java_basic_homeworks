@@ -33,9 +33,9 @@ class ArrayUtilsTest {
     @MethodSource
     public static Stream<Arguments> testData4() {
         return Stream.of(
-                Arguments.of((Object) new int[] {1,2,1,2,2}, (Object) new int[] {2,2}),
-                Arguments.of((Object) new int[] {2,2,2,1,3,4}, (Object) new int[] {3,4}),
-                Arguments.of((Object) new int[] {2,1,4,1,3,5}, (Object) new int[] {3,5})
+                Arguments.of(new int[] {1,2,1,2,2}, new int[] {2,2}),
+                Arguments.of(new int[] {2,2,2,1,3,4}, new int[] {3,4}),
+                Arguments.of(new int[] {2,1,4,1,3,5}, new int[] {3,5})
                 );
     }
 
@@ -52,8 +52,8 @@ class ArrayUtilsTest {
     @MethodSource
     public static Stream<Arguments> testData3() {
         return Stream.of(
-                Arguments.of((Object) new int[] {2,2,3,4}),
-                Arguments.of((Object) new int[] {2,2,4,2,3,5})
+                Arguments.of(new int[] {2,2,3,4}),
+                Arguments.of(new int[] {2,2,4,2,3,5})
                 );
     }
 
@@ -67,8 +67,8 @@ class ArrayUtilsTest {
     @MethodSource
     public static Stream<Arguments> testData1() {
         return Stream.of(
-                Arguments.of((Object) new int[] {1,2}),
-                Arguments.of((Object) new int[] {1,2,2,1})
+                Arguments.of(new int[] {1,2}),
+                Arguments.of(new int[] {1,2,2,1})
         );
     }
 
@@ -82,8 +82,8 @@ class ArrayUtilsTest {
     @MethodSource
     public static Stream<Arguments> testData() {
         return Stream.of(
-                Arguments.of((Object) new int[] {1,1}),
-                Arguments.of((Object) new int[] {1,3})
+                Arguments.of(new int[] {1,1}),
+                Arguments.of(new int[] {1,3})
         );
     }
 
@@ -97,10 +97,10 @@ class ArrayUtilsTest {
     @MethodSource
     public static Stream<Arguments> testData5() {
         return Stream.of(
-                Arguments.of((Object) new int[] {1,1}, false),
-                Arguments.of((Object) new int[] {1,3}, false),
-                Arguments.of((Object) new int[] {1,2}, true),
-                Arguments.of((Object) new int[] {1,2,2,1}, true)
+                Arguments.of( new int[] {1,1}, false),
+                Arguments.of( new int[] {1,3}, false),
+                Arguments.of( new int[] {1,2}, true),
+                Arguments.of( new int[] {1,2,2,1}, true)
         );
     }
 
