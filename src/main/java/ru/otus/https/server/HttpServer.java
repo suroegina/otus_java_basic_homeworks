@@ -17,19 +17,20 @@ public class HttpServer {
         int counter = 0;
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             System.out.println("Сервер запущен на порту: " + port);
-            while (true) {
+            do {
                 counter++;
                 try (Socket socket = serverSocket.accept()) {
                     int number = counter;
                     Thread thread = new Thread(() -> {
                         try {
                             System.out.println("Подключился новый клиент #" + number);
-                            byte[] buffer = new byte[16386];
+                            byte[] buffer = new byte[8192];
                             int n = socket.getInputStream().read(buffer);
+                            System.out.println(n);
                             HttpRequest request = new HttpRequest(new String(buffer, 0, n));
                             request.info(true);
                             dispatcher.execute(request, socket.getOutputStream());
-                        } catch (IOException e) {
+                        } catch (IOException | IndexOutOfBoundsException e) {
                             e.printStackTrace();
                         }
                     });
@@ -38,7 +39,7 @@ public class HttpServer {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-            }
+            } while (true);
         } catch (IOException e) {
             e.printStackTrace();
         }
