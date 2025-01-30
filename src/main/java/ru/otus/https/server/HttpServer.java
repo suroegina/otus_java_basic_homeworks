@@ -17,7 +17,7 @@ public class HttpServer {
         int counter = 0;
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             System.out.println("Сервер запущен на порту: " + port);
-            do {
+            while (true) {
                 counter++;
                 try (Socket socket = serverSocket.accept()) {
                     int number = counter;
@@ -39,7 +39,7 @@ public class HttpServer {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-            } while (true);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
