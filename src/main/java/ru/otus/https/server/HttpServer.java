@@ -26,7 +26,6 @@ public class HttpServer {
                             System.out.println("Подключился новый клиент #" + number);
                             byte[] buffer = new byte[8192];
                             int n = socket.getInputStream().read(buffer);
-                            System.out.println(n);
                             HttpRequest request = new HttpRequest(new String(buffer, 0, n));
                             request.info(true);
                             dispatcher.execute(request, socket.getOutputStream());
