@@ -3,6 +3,8 @@ package ru.otus.https.server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class HttpServer {
     private int port;
@@ -21,7 +23,6 @@ public class HttpServer {
                 counter++;
                 try (Socket socket = serverSocket.accept()) {
                     int number = counter;
-                    Thread thread = new Thread(() -> {
                         try {
                             System.out.println("Подключился новый клиент #" + number);
                             byte[] buffer = new byte[8192];
@@ -29,14 +30,9 @@ public class HttpServer {
                             HttpRequest request = new HttpRequest(new String(buffer, 0, n));
                             request.info(true);
                             dispatcher.execute(request, socket.getOutputStream());
-                        } catch (IOException | IndexOutOfBoundsException e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    });
-                    thread.start();
-                    thread.join();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
                 }
             }
         } catch (IOException e) {
