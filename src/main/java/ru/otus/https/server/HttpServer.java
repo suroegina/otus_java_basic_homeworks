@@ -16,23 +16,19 @@ public class HttpServer {
     }
 
     public void start() {
-        int counter = 0;
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             System.out.println("Сервер запущен на порту: " + port);
             while (true) {
-                counter++;
                 try (Socket socket = serverSocket.accept()) {
-                    int number = counter;
-                        try {
-                            System.out.println("Подключился новый клиент #" + number);
-                            byte[] buffer = new byte[8192];
-                            int n = socket.getInputStream().read(buffer);
-                            HttpRequest request = new HttpRequest(new String(buffer, 0, n));
-                            request.info(true);
-                            dispatcher.execute(request, socket.getOutputStream());
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                    System.out.println("Подключился новый клиент");
+                    byte[] buffer = new byte[8192];
+                    int n = socket.getInputStream().read(buffer);
+                    if (n < 0) {
+                        continue;
+                    }
+                    HttpRequest request = new HttpRequest(new String(buffer, 0, n));
+                    request.info(true);
+                    dispatcher.execute(request, socket.getOutputStream());
                 }
             }
         } catch (IOException e) {
