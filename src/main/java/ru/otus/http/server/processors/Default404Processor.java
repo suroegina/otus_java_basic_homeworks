@@ -1,10 +1,15 @@
-package ru.otus.https.server;
+package ru.otus.http.server.processors;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import ru.otus.http.server.HttpRequest;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 
-public class Default404Processor implements RequestProcessor{
+public class Default404Processor implements RequestProcessor {
+    private static final Logger LOGGER = LogManager.getLogger(Default404Processor.class);
     @Override
     public void execute(HttpRequest request, OutputStream output) throws IOException {
         String response = "" +
@@ -13,5 +18,6 @@ public class Default404Processor implements RequestProcessor{
                 "\r\n" +
                 "<html><body><h1>Page Not Found</h1></body></html>";
         output.write(response.getBytes(StandardCharsets.UTF_8));
+        LOGGER.error("Страница не найдена");
     }
 }

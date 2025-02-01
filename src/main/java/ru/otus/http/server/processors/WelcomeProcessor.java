@@ -1,10 +1,12 @@
-package ru.otus.https.server;
+package ru.otus.http.server.processors;
+
+import ru.otus.http.server.HttpRequest;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 
-public class WelcomeProcessor implements RequestProcessor{
+public class WelcomeProcessor implements RequestProcessor {
     @Override
     public void execute(HttpRequest request, OutputStream output) throws IOException {
         String response = "" +
