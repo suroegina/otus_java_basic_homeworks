@@ -31,10 +31,10 @@ public class UpdateProductProcessor implements RequestProcessor{
             Product product = productsService.getProductById(newId);
             System.out.println(product.getTitle());
             product.setTitle(newProduct.getTitle());
-            LOGGER.info("Обновление продукта - ОК: " + newProduct.toString());
+            LOGGER.debug("Обновление продукта - ОК: " + newProduct.toString());
         } catch (NoSuchElementException e) {
             productsService.createNewProduct(newProduct);
-            LOGGER.info("Обновление продукта - Продукта в списке нет. Создание: " + newProduct.toString());
+            LOGGER.debug("Обновление продукта - Продукта в списке нет. Создание: " + newProduct.toString());
         }
 
         jsonResult = gson.toJson(newProduct);

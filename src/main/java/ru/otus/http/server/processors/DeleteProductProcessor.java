@@ -32,12 +32,12 @@ public class DeleteProductProcessor implements RequestProcessor{
                 productsService.deleteProductById(id);
                 List<Product> products = productsService.getAllProducts();
                 jsonResult = gson.toJson(products);
-                LOGGER.info("Удаление продукта по ИД - ОК");
+                LOGGER.debug("Удаление продукта по ИД - ОК");
             } else {
                 productsService.deleteALLProduct();
                 List<Product> products = productsService.getAllProducts();
                 jsonResult = gson.toJson(products);
-                LOGGER.info("Удаление всех продукта - ОК");
+                LOGGER.debug("Удаление всех продукта - ОК");
             }
 
             String response = "" +
@@ -53,7 +53,7 @@ public class DeleteProductProcessor implements RequestProcessor{
                     "\r\n" +
                     "<html><body><h1>Product not found!</h1></body></html>";
             output.write(response.getBytes(StandardCharsets.UTF_8));
-            LOGGER.info("Удаление всех продукта - Продукт не найден по ИД");
+            LOGGER.debug("Удаление всех продукта - Продукт не найден по ИД");
         }
 
     }

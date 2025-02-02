@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Dispatcher {
+    private static final Logger LOGGER = LogManager.getLogger(Dispatcher.class);
+
     private Map<String, RequestProcessor> router;
     private Default400Processor default400Processor;
     private Default404Processor default404Processor;
@@ -39,11 +41,11 @@ public class Dispatcher {
             }
             router.get(request.getRoutingKey()).execute(request, output);
         } catch (BadRequestException e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage());
             request.setErrorCause(e);
             default400Processor.execute(request,output);
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage());
             default500Processor.execute(request,output);
         }
     }

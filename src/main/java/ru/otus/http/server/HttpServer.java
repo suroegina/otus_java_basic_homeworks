@@ -19,12 +19,10 @@ public class HttpServer {
 
     public void start() {
         try (ServerSocket serverSocket = new ServerSocket(port)) {
-            LOGGER.trace("Сервер запущен на порту: " + port);
-            System.out.println("Сервер запущен на порту: " + port);
+            LOGGER.debug("Сервер запущен на порту: " + port);
             while (true) {
                 try (Socket socket = serverSocket.accept()) {
-                    LOGGER.trace("Подключился новый клиент");
-                    System.out.println("Подключился новый клиент");
+                    LOGGER.debug("Подключился новый клиент");
                     byte[] buffer = new byte[8192];
                     int n = socket.getInputStream().read(buffer);
                     if (n < 0) {
@@ -37,6 +35,7 @@ public class HttpServer {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            LOGGER.error("Ошибка: {}", e.getMessage());
         }
     }
 }
