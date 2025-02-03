@@ -19,17 +19,19 @@ public class HttpServer {
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             System.out.println("Сервер запущен на порту: " + port);
             while (true) {
-                try (Socket socket = serverSocket.accept()) {
-                    System.out.println("Подключился новый клиент");
-                    byte[] buffer = new byte[8192];
-                    int n = socket.getInputStream().read(buffer);
-                    if (n < 0) {
-                        continue;
+                ExecutorService service = Executors.newFixedThreadPool(3);
+                service.execute(() -> {
+                    try (Socket socket = serverSocket.accept()) {
+                        System.out.println("Подключился новый клиент");
+                        byte[] buffer = new byte[8192];
+                        int n = socket.getInputStream().read(buffer);
+                        HttpRequest request = new HttpRequest(new String(buffer, 0, n));
+                        request.info(true);
+                        dispatcher.execute(request, socket.getOutputStream());
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                    HttpRequest request = new HttpRequest(new String(buffer, 0, n));
-                    request.info(true);
-                    dispatcher.execute(request, socket.getOutputStream());
-                }
+                });
             }
         } catch (IOException e) {
             e.printStackTrace();
