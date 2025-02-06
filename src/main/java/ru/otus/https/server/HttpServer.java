@@ -18,10 +18,11 @@ public class HttpServer {
     public void start() {
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             System.out.println("Сервер запущен на порту: " + port);
+            ExecutorService service = Executors.newFixedThreadPool(3);
             while (true) {
-                ExecutorService service = Executors.newFixedThreadPool(3);
+                Socket socket = serverSocket.accept();
                 service.execute(() -> {
-                    try (Socket socket = serverSocket.accept()) {
+                    try {
                         System.out.println("Подключился новый клиент");
                         byte[] buffer = new byte[8192];
                         int n = socket.getInputStream().read(buffer);
@@ -30,10 +31,16 @@ public class HttpServer {
                         dispatcher.execute(request, socket.getOutputStream());
                     } catch (IOException e) {
                         e.printStackTrace();
+                    } finally {
+                        try {
+                            socket.close();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 });
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
