@@ -78,7 +78,7 @@ public class HttpRequest {
                     );
             this.body = rawRequest.substring(rawRequest.indexOf("\r\n\r\n") + 4, rawRequest.length());
         } catch (Exception e) {
-            LOGGER.error("Ошибка в парсинге: {}", e.getMessage());
+            LOGGER.error("Ошибка в парсинге: ", e);
         }
     }
 
@@ -87,9 +87,6 @@ public class HttpRequest {
         LOGGER.debug("URI: " + uri);
         LOGGER.debug("HEADERS: " + headers);
         LOGGER.debug("BODY: " + body);
-        if (showRawRequest) {
-            LOGGER.debug(rawRequest);
-        }
     }
 
 

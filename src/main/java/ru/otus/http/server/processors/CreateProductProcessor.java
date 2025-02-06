@@ -26,7 +26,7 @@ public class CreateProductProcessor implements RequestProcessor{
         Gson gson = new Gson();
         Product newProduct = gson.fromJson(request.getBody(), Product.class);
         productsService.createNewProduct(newProduct);
-        LOGGER.debug("Создание продукта - ОК: " + newProduct.toString());
+        LOGGER.info("Создание продукта - ОК: " + newProduct.toString());
         String response = "" +
                 "HTTP/1.1 201 Created\r\n" +
                 "Connect-Type: text/html\r\n" +

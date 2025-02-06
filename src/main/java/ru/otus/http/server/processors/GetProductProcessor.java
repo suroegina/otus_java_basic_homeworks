@@ -29,11 +29,11 @@ public class GetProductProcessor implements RequestProcessor{
             Long id = Long.parseLong(request.getParemeter("id"));
             Product product = productsService.getProductById(id);
             jsonResult = gson.toJson(product);
-            LOGGER.debug("Получение продукта по ИД - ОК");
+            LOGGER.info("Получение продукта по ИД - ОК");
         } else {
             List<Product> products = productsService.getAllProducts();
             jsonResult = gson.toJson(products);
-            LOGGER.debug("Получение всех продуктов - ОК");
+            LOGGER.info("Получение всех продуктов - ОК");
         }
 
         String response = "" +
