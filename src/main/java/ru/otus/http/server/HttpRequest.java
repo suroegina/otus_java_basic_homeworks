@@ -55,15 +55,20 @@ public class HttpRequest {
             this.paremetres = new HashMap<>();
             this.headers = new HashMap<>();
             int startIndex = rawRequest.indexOf(' ');
+            LOGGER.debug("startIndex = " + startIndex);
             int endIndex = rawRequest.indexOf(' ', startIndex + 1);
+            LOGGER.debug("endIndex = " + endIndex);
             this.method = HttpMethod.valueOf(rawRequest.substring(0, startIndex));
             this.uri = rawRequest.substring(startIndex + 1, endIndex);
             if (this.uri.contains("?")) {
                 String[] tokens = uri.split("[?]");
+                LOGGER.debug("tokens[0] = " + tokens[0]);
                 this.uri = tokens[0];
                 String[] paramsPair = tokens[1].split("[&]");
                 for (String o : paramsPair) {
                     String[] keyValue = o.split("=");
+                    LOGGER.debug("keyValue[0] = " + keyValue[0]);
+                    LOGGER.debug("keyValue[1] = " + keyValue[1]);
                     this.paremetres.put(keyValue[0], keyValue[1]);
                 }
             }
@@ -83,10 +88,10 @@ public class HttpRequest {
     }
 
     public void info(boolean showRawRequest) {
-        LOGGER.debug("METHOD: " + method);
-        LOGGER.debug("URI: " + uri);
-        LOGGER.debug("HEADERS: " + headers);
-        LOGGER.debug("BODY: " + body);
+        LOGGER.info("METHOD: " + method);
+        LOGGER.info("URI: " + uri);
+        LOGGER.info("HEADERS: " + headers);
+        LOGGER.info("BODY: " + body);
     }
 
 

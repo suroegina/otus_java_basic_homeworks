@@ -151,3 +151,132 @@ Content-Length: 40
     "title": "Apple"
 }
 2025-02-01 15:20:49 ERROR Default404Processor:21 - Страница не найдена
+2025-02-06 13:41:29 INFO  GetProductProcessor:36 - Получение всех продуктов - ОК
+2025-02-06 13:42:17 INFO  GetProductProcessor:32 - Получение продукта по ИД - ОК
+2025-02-06 13:42:38 ERROR Default404Processor:21 - Страница не найдена
+2025-02-06 13:42:51 ERROR Default404Processor:21 - Страница не найдена
+2025-02-06 13:43:34 ERROR Default404Processor:21 - Страница не найдена
+2025-02-06 13:44:26 ERROR Default404Processor:21 - Страница не найдена
+2025-02-06 20:20:35 INFO  HttpRequest:90 - METHOD: GET
+2025-02-06 20:20:35 INFO  HttpRequest:91 - URI: /welcome
+2025-02-06 20:20:35 INFO  HttpRequest:92 - HEADERS: {Accept=text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7, Connection=keep-alive, User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36, Sec-Fetch-Site=none, Sec-Fetch-Dest=document, Host=localhost:8189, Accept-Encoding=gzip, deflate, br, zstd, Sec-Fetch-Mode=navigate, sec-ch-ua="Not A(Brand";v="8", "Chromium";v="132", "Google Chrome";v="132", sec-ch-ua-mobile=?0, Upgrade-Insecure-Requests=1, sec-ch-ua-platform="Windows", Sec-Fetch-User=?1, Accept-Language=ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7}
+2025-02-06 20:20:35 INFO  HttpRequest:93 - BODY: 
+2025-02-06 20:21:50 DEBUG Application:9 - Запускаем сервер...
+2025-02-06 20:21:57 DEBUG HttpRequest:58 - startIndex = 3
+2025-02-06 20:21:57 DEBUG HttpRequest:60 - endIndex = 12
+2025-02-06 20:21:57 INFO  HttpRequest:90 - METHOD: GET
+2025-02-06 20:21:57 INFO  HttpRequest:91 - URI: /welcome
+2025-02-06 20:21:57 INFO  HttpRequest:92 - HEADERS: {Accept=text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7, Connection=keep-alive, User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36, Sec-Fetch-Site=none, Sec-Fetch-Dest=document, Host=localhost:8189, Accept-Encoding=gzip, deflate, br, zstd, Sec-Fetch-Mode=navigate, sec-ch-ua="Not A(Brand";v="8", "Chromium";v="132", "Google Chrome";v="132", sec-ch-ua-mobile=?0, Cache-Control=max-age=0, Upgrade-Insecure-Requests=1, sec-ch-ua-platform="Windows", Sec-Fetch-User=?1, Accept-Language=ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7}
+2025-02-06 20:21:57 INFO  HttpRequest:93 - BODY: 
+2025-02-06 20:24:53 DEBUG Application:9 - Запускаем сервер...
+2025-02-06 20:24:53 DEBUG HttpRequest:58 - startIndex = 3
+2025-02-06 20:24:53 DEBUG HttpRequest:60 - endIndex = 12
+2025-02-06 20:24:53 INFO  HttpRequest:91 - METHOD: GET
+2025-02-06 20:24:53 INFO  HttpRequest:92 - URI: /welcome
+2025-02-06 20:24:53 INFO  HttpRequest:93 - HEADERS: {Accept=text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7, Connection=keep-alive, User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36, Sec-Fetch-Site=none, Sec-Fetch-Dest=document, Host=localhost:8189, Accept-Encoding=gzip, deflate, br, zstd, Sec-Fetch-Mode=navigate, sec-ch-ua="Not A(Brand";v="8", "Chromium";v="132", "Google Chrome";v="132", sec-ch-ua-mobile=?0, Cache-Control=max-age=0, Upgrade-Insecure-Requests=1, sec-ch-ua-platform="Windows", Sec-Fetch-User=?1, Accept-Language=ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7}
+2025-02-06 20:24:53 INFO  HttpRequest:94 - BODY: 
+2025-02-06 20:24:58 DEBUG HttpRequest:58 - startIndex = 3
+2025-02-06 20:24:58 DEBUG HttpRequest:60 - endIndex = 19
+2025-02-06 20:24:58 DEBUG HttpRequest:65 - tokens[0] = /calc
+2025-02-06 20:24:58 DEBUG HttpRequest:70 - keyValue[0] = a
+2025-02-06 20:24:58 DEBUG HttpRequest:71 - keyValue[1] = 10
+2025-02-06 20:24:58 DEBUG HttpRequest:70 - keyValue[0] = b
+2025-02-06 20:24:58 DEBUG HttpRequest:71 - keyValue[1] = 11
+2025-02-06 20:24:58 INFO  HttpRequest:91 - METHOD: GET
+2025-02-06 20:24:58 INFO  HttpRequest:92 - URI: /calc
+2025-02-06 20:24:58 INFO  HttpRequest:93 - HEADERS: {Accept=text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7, Connection=keep-alive, User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36, Sec-Fetch-Site=none, Sec-Fetch-Dest=document, Host=localhost:8189, Purpose=prefetch, Accept-Encoding=gzip, deflate, br, zstd, Sec-Fetch-Mode=navigate, sec-ch-ua="Not A(Brand";v="8", "Chromium";v="132", "Google Chrome";v="132", sec-ch-ua-mobile=?0, Upgrade-Insecure-Requests=1, sec-ch-ua-platform="Windows", Sec-Fetch-User=?1, Accept-Language=ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7, Sec-Purpose=prefetch;prerender}
+2025-02-06 20:24:58 INFO  HttpRequest:94 - BODY: 
+2025-02-11 00:49:46 DEBUG Application:9 - Запускаем сервер...
+2025-02-11 00:49:52 DEBUG HttpRequest:58 - startIndex = 3
+2025-02-11 00:49:52 DEBUG HttpRequest:60 - endIndex = 12
+2025-02-11 00:49:52 INFO  HttpRequest:91 - METHOD: GET
+2025-02-11 00:49:52 INFO  HttpRequest:92 - URI: /product
+2025-02-11 00:49:52 INFO  HttpRequest:93 - HEADERS: {Accept=*/*, User-Agent=PostmanRuntime/7.43.0, Connection=keep-alive, Postman-Token=7b25988d-3640-44af-ac4c-a35ca7ba768a, Host=localhost:8189, Accept-Encoding=gzip, deflate, br, Content-Length=40, Content-Type=application/json}
+2025-02-11 00:49:52 INFO  HttpRequest:94 - BODY: {
+    "id": 2,
+    "title": "Apple"
+}
+2025-02-11 00:49:52 INFO  GetProductProcessor:36 - Получение всех продуктов - ОК
+2025-02-11 00:50:19 DEBUG HttpRequest:58 - startIndex = 6
+2025-02-11 00:50:19 DEBUG HttpRequest:60 - endIndex = 20
+2025-02-11 00:50:19 DEBUG HttpRequest:65 - tokens[0] = /product
+2025-02-11 00:50:19 DEBUG HttpRequest:70 - keyValue[0] = id
+2025-02-11 00:50:19 DEBUG HttpRequest:71 - keyValue[1] = 2
+2025-02-11 00:50:19 INFO  HttpRequest:91 - METHOD: DELETE
+2025-02-11 00:50:19 INFO  HttpRequest:92 - URI: /product
+2025-02-11 00:50:19 INFO  HttpRequest:93 - HEADERS: {Accept=*/*, User-Agent=PostmanRuntime/7.43.0, Connection=keep-alive, Postman-Token=593694b2-5ad8-4533-81cc-c94d85a211b7, Host=localhost:8189, Accept-Encoding=gzip, deflate, br, Content-Length=40, Content-Type=application/json}
+2025-02-11 00:50:19 INFO  HttpRequest:94 - BODY: {
+    "id": 2,
+    "title": "Apple"
+}
+2025-02-11 00:50:19 INFO  DeleteProductProcessor:35 - Удаление продукта по ИД - ОК
+2025-02-11 00:50:35 DEBUG HttpRequest:58 - startIndex = 3
+2025-02-11 00:50:35 DEBUG HttpRequest:60 - endIndex = 12
+2025-02-11 00:50:35 INFO  HttpRequest:91 - METHOD: GET
+2025-02-11 00:50:35 INFO  HttpRequest:92 - URI: /product
+2025-02-11 00:50:35 INFO  HttpRequest:93 - HEADERS: {Accept=*/*, User-Agent=PostmanRuntime/7.43.0, Connection=keep-alive, Postman-Token=b21968ae-06b0-463b-88db-0daf122bad24, Host=localhost:8189, Accept-Encoding=gzip, deflate, br, Content-Length=40, Content-Type=application/json}
+2025-02-11 00:50:35 INFO  HttpRequest:94 - BODY: {
+    "id": 2,
+    "title": "Apple"
+}
+2025-02-11 00:50:35 INFO  GetProductProcessor:36 - Получение всех продуктов - ОК
+2025-02-11 00:51:31 DEBUG HttpRequest:58 - startIndex = 3
+2025-02-11 00:51:31 DEBUG HttpRequest:60 - endIndex = 12
+2025-02-11 00:51:31 INFO  HttpRequest:91 - METHOD: PUT
+2025-02-11 00:51:31 INFO  HttpRequest:92 - URI: /product
+2025-02-11 00:51:31 INFO  HttpRequest:93 - HEADERS: {Accept=*/*, User-Agent=PostmanRuntime/7.43.0, Connection=keep-alive, Postman-Token=ee29af20-0084-4162-8e3b-4555091a4692, Host=localhost:8189, Accept-Encoding=gzip, deflate, br, Content-Length=40, Content-Type=application/json}
+2025-02-11 00:51:31 INFO  HttpRequest:94 - BODY: {
+    "id": 2,
+    "title": "Apple"
+}
+2025-02-11 00:51:31 INFO  UpdateProductProcessor:37 - Обновление продукта - Продукта в списке нет. Создание: Product{id=2, title='Apple'}
+2025-02-11 00:51:38 DEBUG HttpRequest:58 - startIndex = 3
+2025-02-11 00:51:38 DEBUG HttpRequest:60 - endIndex = 12
+2025-02-11 00:51:38 INFO  HttpRequest:91 - METHOD: GET
+2025-02-11 00:51:38 INFO  HttpRequest:92 - URI: /product
+2025-02-11 00:51:38 INFO  HttpRequest:93 - HEADERS: {Accept=*/*, User-Agent=PostmanRuntime/7.43.0, Connection=keep-alive, Postman-Token=542d9bc1-f8b5-48e5-aa64-714a96d36457, Host=localhost:8189, Accept-Encoding=gzip, deflate, br, Content-Length=40, Content-Type=application/json}
+2025-02-11 00:51:38 INFO  HttpRequest:94 - BODY: {
+    "id": 2,
+    "title": "Apple"
+}
+2025-02-11 00:51:38 INFO  GetProductProcessor:36 - Получение всех продуктов - ОК
+2025-02-11 00:51:55 DEBUG HttpRequest:58 - startIndex = 3
+2025-02-11 00:51:55 DEBUG HttpRequest:60 - endIndex = 17
+2025-02-11 00:51:55 DEBUG HttpRequest:65 - tokens[0] = /product
+2025-02-11 00:51:55 DEBUG HttpRequest:70 - keyValue[0] = id
+2025-02-11 00:51:55 DEBUG HttpRequest:71 - keyValue[1] = 3
+2025-02-11 00:51:55 INFO  HttpRequest:91 - METHOD: GET
+2025-02-11 00:51:55 INFO  HttpRequest:92 - URI: /product
+2025-02-11 00:51:55 INFO  HttpRequest:93 - HEADERS: {Accept=*/*, User-Agent=PostmanRuntime/7.43.0, Connection=keep-alive, Postman-Token=54759949-4c58-4860-9096-5025f4f7be72, Host=localhost:8189, Accept-Encoding=gzip, deflate, br, Content-Length=40, Content-Type=application/json}
+2025-02-11 00:51:55 INFO  HttpRequest:94 - BODY: {
+    "id": 2,
+    "title": "Apple"
+}
+2025-02-11 00:51:55 INFO  GetProductProcessor:32 - Получение продукта по ИД - ОК
+2025-02-11 00:52:02 DEBUG HttpRequest:58 - startIndex = 3
+2025-02-11 00:52:02 DEBUG HttpRequest:60 - endIndex = 17
+2025-02-11 00:52:02 DEBUG HttpRequest:65 - tokens[0] = /product
+2025-02-11 00:52:02 DEBUG HttpRequest:70 - keyValue[0] = id
+2025-02-11 00:52:02 DEBUG HttpRequest:71 - keyValue[1] = 5
+2025-02-11 00:52:02 INFO  HttpRequest:91 - METHOD: GET
+2025-02-11 00:52:02 INFO  HttpRequest:92 - URI: /product
+2025-02-11 00:52:02 INFO  HttpRequest:93 - HEADERS: {Accept=*/*, User-Agent=PostmanRuntime/7.43.0, Connection=keep-alive, Postman-Token=6087dc5c-ebf9-48d3-bab6-b1da5e971623, Host=localhost:8189, Accept-Encoding=gzip, deflate, br, Content-Length=40, Content-Type=application/json}
+2025-02-11 00:52:02 INFO  HttpRequest:94 - BODY: {
+    "id": 2,
+    "title": "Apple"
+}
+2025-02-11 00:52:02 ERROR Dispatcher:48 - No value present
+2025-02-11 00:52:02 ERROR Default500Processor:21 - Internal Server Error: something wrong...
+2025-02-11 00:52:23 DEBUG HttpRequest:58 - startIndex = 3
+2025-02-11 00:52:23 DEBUG HttpRequest:60 - endIndex = 17
+2025-02-11 00:52:23 DEBUG HttpRequest:65 - tokens[0] = /product
+2025-02-11 00:52:23 DEBUG HttpRequest:70 - keyValue[0] = id
+2025-02-11 00:52:23 DEBUG HttpRequest:71 - keyValue[1] = 1
+2025-02-11 00:52:23 INFO  HttpRequest:91 - METHOD: GET
+2025-02-11 00:52:23 INFO  HttpRequest:92 - URI: /product
+2025-02-11 00:52:23 INFO  HttpRequest:93 - HEADERS: {Accept=*/*, User-Agent=PostmanRuntime/7.43.0, Connection=keep-alive, Postman-Token=197c2e7e-453e-42af-87a1-ac6ff3740952, Host=localhost:8189, Accept-Encoding=gzip, deflate, br, Content-Length=40, Content-Type=application/json}
+2025-02-11 00:52:23 INFO  HttpRequest:94 - BODY: {
+    "id": 2,
+    "title": "Apple"
+}
+2025-02-11 00:52:23 INFO  GetProductProcessor:32 - Получение продукта по ИД - ОК
